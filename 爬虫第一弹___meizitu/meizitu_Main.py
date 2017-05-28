@@ -15,7 +15,7 @@ Soup = BeautifulSoup(start_html.text, 'lxml')##使用BeautifulSoup来解析我�
 all_a = Soup.find('div', class_='all').find_all('a')##意思是先查找 class为 all 的div标签，然后查找所有的<a>标签。
 for a in all_a:
     title = a.get_text() #取出a标签的文本
-    path = str(title).strip() ##去掉空格
+    path = str(title).strip().replace('?','') ##去掉空格
     os.makedirs(os.path.join("E:\mzitu", path)) ##创建一个存放套图的文件夹
     os.chdir("E:\mzitu\\"+path) ##切换到上面创建的文件夹
     href = a['href'] #取出a标签的href 属性
